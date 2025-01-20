@@ -5,8 +5,8 @@ import icons from "@/constants/icons";
 
 const Home = () => {
   return (
-    <SafeAreaView className="h-full bg-[#673AB7]">
-      <ScrollView className="m-7">
+    <SafeAreaView className="h-full bg-white">
+      <ScrollView>
         {/* <Text>Hello</Text>
         <Link href={"/login"}>
           <TouchableOpacity>
@@ -15,9 +15,9 @@ const Home = () => {
         </Link> */}
 
         {/* Nav of the app */}
-        <View className="mt-7 flex flex-col">
+        <View className="p-7 pt-9 flex flex-col bg-[#673AB7]">
           {/* Upper nav */}
-          <View className="mb-3 flex flex-row items-center justify-between gap-6">
+          <View className="pb-3 flex flex-row items-center justify-between gap-6">
             {/* Left Section: Image and Name */}
             <View className="flex flex-row items-center gap-4 flex-shrink">
               {/* Profile Image */}
@@ -57,7 +57,9 @@ const Home = () => {
           </View>
         </View>
 
-        
+        <View className="bg-white rounded-full">
+          <Text>lskf</Text>
+        </View>
       </ScrollView>
     </SafeAreaView>
   );
