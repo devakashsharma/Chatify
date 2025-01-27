@@ -51,13 +51,15 @@ const Home = () => {
           </View>
 
           {/* Folder Navigation */}
-          <View className="bg-gray-100 rounded-t-[28px] mt-3 px-4 py-6">
+          <View className="bg-white rounded-t-[28px] mt-3 px-4 py-6">
             <View className="flex-row justify-around">
               {folderNames.map((name, index) => (
                 <TouchableOpacity key={index}>
                   <Text
-                    className={`text-xl font-semibold ${
-                      index === 0 ? "text-black font-bold" : "text-gray-500"
+                    className={`text-xl font-rubik-medium ${
+                      index === 0
+                        ? "text-black font-rubik-bold"
+                        : "text-gray-500"
                     }`}
                   >
                     {name}
@@ -68,10 +70,14 @@ const Home = () => {
           </View>
         </View>
 
+        {/* Conversation */}
+        <View className="bg-gray-100 text-xs py-4 px-6">
+          <Text className="text-gray-500">Conversation</Text>
+        </View>
+
         {/* Chat List Section */}
         <View className="p-6">
           <Text className="text-xl text-gray-700">Chat List Placeholder</Text>
-          {/* Add chat cards or messages here */}
         </View>
       </ScrollView>
     </SafeAreaView>
