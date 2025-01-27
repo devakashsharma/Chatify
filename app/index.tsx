@@ -4,33 +4,26 @@ import { SafeAreaView } from "react-native-safe-area-context";
 import icons from "@/constants/icons";
 
 const Home = () => {
+  const folderNames = ["All", "Group", "Unread", "Archived"]; // Fixed typo in "Archived"
+
   return (
     <SafeAreaView className="h-full bg-white">
       <ScrollView>
-        {/* <Text>Hello</Text>
-        <Link href={"/login"}>
-          <TouchableOpacity>
-            <Text>Click Here</Text>
-          </TouchableOpacity>
-        </Link> */}
-
-        {/* Nav of the app */}
-        <View className="p-7 pt-9 flex flex-col bg-[#673AB7]">
-          {/* Upper nav */}
-          <View className="pb-3 flex flex-row items-center justify-between gap-6">
-            {/* Left Section: Image and Name */}
-            <View className="flex flex-row items-center gap-4 flex-shrink">
+        {/* Header Section */}
+        <View className="pt-8 bg-[#673AB7]">
+          {/* Upper Navigation */}
+          <View className="flex-row items-center justify-between pb-4">
+            {/* Profile Section */}
+            <View className="flex-row items-center px-6 gap-4">
               {/* Profile Image */}
-              <View className="w-[72px] h-[72px] rounded-full bg-white">
-                {/* Placeholder for Image */}
-              </View>
+              <View className="w-[72px] h-[72px] rounded-full bg-white" />
               {/* Name and Status */}
-              <View className="flex flex-col flex-shrink">
+              <View>
                 <Text
-                  className="text-xl font-rubik-bold text-white"
-                  numberOfLines={1} // Truncates to one line
-                  ellipsizeMode="tail" // Adds "..." if text overflows
-                  style={{ maxWidth: 150 }} // Limits width of name
+                  className="text-xl font-bold text-white"
+                  numberOfLines={1}
+                  ellipsizeMode="tail"
+                  style={{ maxWidth: 150 }}
                 >
                   Akash Sharma
                 </Text>
@@ -38,27 +31,47 @@ const Home = () => {
               </View>
             </View>
 
-            {/* Right Section: Search and 3-Dot Icons */}
-            <View className="flex flex-row items-center gap-4">
-              {/* Search Icon */}
-              <Image source={icons.search} className="w-7 h-7" />
-              {/* 3-Dot Icon */}
-              <Image source={icons.three_dots} className="" />
+            {/* Actions Section */}
+            <View className="flex-row items-center gap-4">
+              <TouchableOpacity>
+                <Image source={icons.search} className="w-7 h-7" />
+              </TouchableOpacity>
+              <TouchableOpacity>
+                <Image source={icons.three_dots} className="w-7 h-7" />
+              </TouchableOpacity>
             </View>
           </View>
 
-          <View className="mt-8 flex flex-row justify-start items-center gap-6 pr-5">
-            <Text className="text-5xl font-rubik-bold text-white">Chat</Text>
+          {/* Title Section */}
+          <View className="flex-row items-center px-6 pb-6 gap-4 mt-6">
+            <Text className="text-5xl font-bold text-white">Chat</Text>
             <View className="w-12 h-12 bg-white rounded-full flex justify-center items-center">
-              <Text className="font-rubik-bold text-gray-400 items-center text-2xl">
-                21
-              </Text>
+              <Text className="text-2xl font-bold text-gray-500">21</Text>
+            </View>
+          </View>
+
+          {/* Folder Navigation */}
+          <View className="bg-gray-100 rounded-t-[28px] mt-3 px-4 py-6">
+            <View className="flex-row justify-around">
+              {folderNames.map((name, index) => (
+                <TouchableOpacity key={index}>
+                  <Text
+                    className={`text-xl font-semibold ${
+                      index === 0 ? "text-black font-bold" : "text-gray-500"
+                    }`}
+                  >
+                    {name}
+                  </Text>
+                </TouchableOpacity>
+              ))}
             </View>
           </View>
         </View>
 
-        <View className="bg-white rounded-full">
-          <Text>lskf</Text>
+        {/* Chat List Section */}
+        <View className="p-6">
+          <Text className="text-xl text-gray-700">Chat List Placeholder</Text>
+          {/* Add chat cards or messages here */}
         </View>
       </ScrollView>
     </SafeAreaView>
