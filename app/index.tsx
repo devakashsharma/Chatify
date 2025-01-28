@@ -2,6 +2,8 @@ import { Link } from "expo-router";
 import { Text, TouchableOpacity, View, Image, ScrollView } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import icons from "@/constants/icons";
+import ChatIndex from "./chats";
+import ChatList from "./chats/chatlist";
 
 const Home = () => {
   const folderNames = ["All", "Group", "Unread", "Archived"]; // Fixed typo in "Archived"
@@ -71,13 +73,15 @@ const Home = () => {
         </View>
 
         {/* Conversation */}
-        <View className="bg-gray-100 text-xs py-4 px-6">
+        <View className="bg-gray-100 text-xs py-5 px-6 rounded-t-3xl">
           <Text className="text-gray-500">Conversation</Text>
         </View>
 
         {/* Chat List Section */}
-        <View className="p-6">
+        <View className="">
           <Text className="text-xl text-gray-700">Chat List Placeholder</Text>
+          {/* <ChatIndex name="Akash" lastMessage="Hey There" time="3:12" avatar="" /> */}
+          <ChatList />
         </View>
       </ScrollView>
     </SafeAreaView>
