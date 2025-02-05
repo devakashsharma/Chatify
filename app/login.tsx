@@ -6,12 +6,27 @@ import {
   TextInput,
   TouchableOpacity,
 } from "react-native";
-import React from "react";
+import React, { useState } from "react";
 import { SafeAreaView } from "react-native-safe-area-context";
 import images from "@/constants/images";
 import { Link } from "expo-router";
+import { login } from "../services/authService"; // Import login function
 
 export default function Login() {
+
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
+
+  const handleLogin = async () => {
+    const user = await login(email, password);
+    if (!user) {
+      setError("Login failed. Check your email or password.");
+    } else {
+      console.log("User logged in:", user);
+    }
+  };
+
   return (
     <SafeAreaView className="bg-[#7B2CBF] h-full">
       <ScrollView contentContainerClassName="flex-grow">
@@ -37,18 +52,21 @@ export default function Login() {
                 className="border border-gray-300 rounded-lg p-4 mb-4 bg-white font-rubik"
                 placeholder="E-mail"
                 keyboardType="email-address"
+                onChangeText={setEmail} value={email}
               />
               <TextInput
                 className="border border-gray-300 rounded-lg p-4 mb-4 bg-white font-rubik"
                 placeholder="Password"
                 secureTextEntry
+                onChangeText={setPassword} value={password} 
               />
             </View>
             <Link href={"/"}>
             <TouchableOpacity className="bg-[#3C096C] py-3 px-14 rounded-lg">
-              <Text className="text-white text-center text-lg font-rubik">
+              <Text className="text-white text-center text-lg font-rubik"  onPress={handleLogin} >
                 Login
               </Text>
+              {error ? <Text>{error}</Text> : null}
             </TouchableOpacity>
             </Link>
             {/* Adjusted Forget Password Section */}
@@ -78,3 +96,35 @@ export default function Login() {
     </SafeAreaView>
   );
 }
+
+// /apps/login.tsx
+// import React, { useState } from "react";
+// import { View, TextInput, Button, Text } from "react-native";
+// import { login } from "../services/authService"; // Import login function
+
+// const LoginScreen = () => {
+//   const [email, setEmail] = useState("");
+//   const [password, setPassword] = useState("");
+//   const [error, setError] = useState("");
+
+//   const handleLogin = async () => {
+//     const user = await login(email, password);
+//     if (!user) {
+//       setError("Login failed. Check your email or password.");
+//     } else {
+//       console.log("User logged in:", user);
+//     }
+//   };
+
+//   return (
+//     <View>
+//       <Text>Login</Text>
+//       <TextInput placeholder="Email" onChangeText={setEmail} value={email} />
+//       <TextInput placeholder="Password" secureTextEntry onChangeText={setPassword} value={password} />
+//       <Button title="Login" onPress={handleLogin} />
+//       {error ? <Text>{error}</Text> : null}
+//     </View>
+//   );
+// };
+
+// export default LoginScreen;

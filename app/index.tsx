@@ -11,6 +11,7 @@ const Home = () => {
   return (
     <SafeAreaView className="h-full bg-white">
       <ScrollView>
+        <Link href={"/login"} className="p-6"><Text className="bg-blue-800 text-white">Login</Text></Link>
         {/* Header Section */}
         <View className="pt-8 bg-[#673AB7]">
           {/* Upper Navigation */}
